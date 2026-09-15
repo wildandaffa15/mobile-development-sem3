@@ -6,7 +6,7 @@ class Course {
   final int sks;
   final double progress; // progres silabus (0.0 - 1.0)
   final String room;
-  final String category;
+  final String category; 
 
   const Course({
     required this.code,
