@@ -74,7 +74,11 @@ class _RuangPraktikumState extends State<RuangPraktikum> {
           builder: (context, c) {
             final width = c.maxWidth;
             final padding = width < 600 ? 16.0 : 24.0;
-            final columns = width < 600 ? 1 : width < 1000 ? 2 : 3;
+            final columns = width < 600
+                ? 1
+                : width < 1000
+                ? 2
+                : 3;
             final cardWidth =
                 (width - padding * 2 - 12 * (columns - 1)) / columns;
 
@@ -178,9 +182,7 @@ class _RuangPraktikumState extends State<RuangPraktikum> {
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
-        side: BorderSide(
-          color: theme.colorScheme.outlineVariant,
-        ),
+        side: BorderSide(color: theme.colorScheme.outlineVariant),
       ),
       child: InkWell(
         onTap: () => _detail(item),
@@ -204,11 +206,7 @@ class _RuangPraktikumState extends State<RuangPraktikum> {
               Positioned(
                 top: 0,
                 right: 0,
-                child: _status(
-                  item['status']!,
-                  colors.bg,
-                  colors.fg,
-                ),
+                child: _status(item['status']!, colors.bg, colors.fg),
               ),
 
               Padding(
@@ -217,15 +215,9 @@ class _RuangPraktikumState extends State<RuangPraktikum> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (item['jam']!.isNotEmpty) ...[
-                      _info(
-                        Icons.access_time_rounded,
-                        item['jam']!,
-                      ),
+                      _info(Icons.access_time_rounded, item['jam']!),
                       const SizedBox(height: 7),
-                      _info(
-                        Icons.location_on_rounded,
-                        item['lokasi']!,
-                      ),
+                      _info(Icons.location_on_rounded, item['lokasi']!),
                     ],
                     const SizedBox(height: 12),
                     _infoBox(
@@ -255,21 +247,14 @@ class _RuangPraktikumState extends State<RuangPraktikum> {
 
   Widget _status(String text, Color bg, Color fg) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 11,
-        vertical: 6,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 6),
       decoration: BoxDecoration(
         color: bg,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
         text,
-        style: TextStyle(
-          color: fg,
-          fontSize: 12,
-          fontWeight: FontWeight.w600,
-        ),
+        style: TextStyle(color: fg, fontSize: 12, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -283,28 +268,15 @@ class _RuangPraktikumState extends State<RuangPraktikum> {
           color: Theme.of(context).colorScheme.onSurfaceVariant,
         ),
         const SizedBox(width: 8),
-        Expanded(
-          child: Text(
-            text,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
+        Expanded(child: Text(text, overflow: TextOverflow.ellipsis)),
       ],
     );
   }
 
-  Widget _infoBox(
-    IconData icon,
-    String text,
-    Color bg,
-    Color fg,
-  ) {
+  Widget _infoBox(IconData icon, String text, Color bg, Color fg) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 13,
-        vertical: 11,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 11),
       decoration: BoxDecoration(
         color: bg,
         borderRadius: BorderRadius.circular(10),
@@ -337,9 +309,7 @@ class _RuangPraktikumState extends State<RuangPraktikum> {
       isScrollControlled: true,
       useSafeArea: true,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(20),
-        ),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) => Padding(
         padding: const EdgeInsets.all(24),
@@ -364,27 +334,11 @@ class _RuangPraktikumState extends State<RuangPraktikum> {
               ),
               const SizedBox(height: 20),
               if (item['jam']!.isNotEmpty)
-                _detailItem(
-                  Icons.access_time,
-                  'Jam',
-                  item['jam']!,
-                ),
+                _detailItem(Icons.access_time, 'Jam', item['jam']!),
               if (item['lokasi']!.isNotEmpty)
-                _detailItem(
-                  Icons.location_on,
-                  'Lokasi',
-                  item['lokasi']!,
-                ),
-              _detailItem(
-                Icons.info,
-                'Status',
-                item['status']!,
-              ),
-              _detailItem(
-                Icons.notes,
-                'Keterangan',
-                item['pesan']!,
-              ),
+                _detailItem(Icons.location_on, 'Lokasi', item['lokasi']!),
+              _detailItem(Icons.info, 'Status', item['status']!),
+              _detailItem(Icons.notes, 'Keterangan', item['pesan']!),
               const SizedBox(height: 8),
               SizedBox(
                 width: double.infinity,
@@ -400,20 +354,13 @@ class _RuangPraktikumState extends State<RuangPraktikum> {
     );
   }
 
-  Widget _detailItem(
-    IconData icon,
-    String title,
-    String value,
-  ) {
+  Widget _detailItem(IconData icon, String title, String value) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(
-            icon,
-            color: Theme.of(context).colorScheme.primary,
-          ),
+          Icon(icon, color: Theme.of(context).colorScheme.primary),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -423,17 +370,13 @@ class _RuangPraktikumState extends State<RuangPraktikum> {
                   title,
                   style: TextStyle(
                     fontSize: 12,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onSurfaceVariant,
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                 ),
                 Text(
                   value,
                   softWrap: true,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
               ],
             ),
