@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 // import 'package:profil_mahasiswa/modul_01/profile_screen.dart';
 // import 'package:profil_mahasiswa/modul_02/academic_dashboard_screen.dart';
 // import 'modul_02/studi_kasus/ruang_praktikum.dart';
-import 'modul_03/modul_03_app.dart';
+// import 'modul_03/modul_03_app.dart';
+import 'modul_04/modul_04_app.dart';
 
 void main() {
   runApp(const PoliwangiApp());
@@ -22,7 +23,7 @@ class PoliwangiApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const Modul03App(),
+      home: const Modul04App(),
     );
   }
 }
